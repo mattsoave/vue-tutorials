@@ -8,10 +8,16 @@
             app = new Vue({
                 el: '#app',
                 data: {
-                    message: 'Hello Vue!'
+                    message: 'Hello Vue!',
+                    myflag: false,
+                    myarray: []
                 }
             })
         });
+        
+        function additem() {
+            app.myarray.push("Item");
+        }
     </script>
 </head>
 
@@ -19,6 +25,11 @@
 
     <div id="app">
         {{ message }}
+        <span v-if="myflag">Here is some content that should only show if myflag exists.</span>
+        <button onclick="additem()">Add</button>
+        <ul v-if="myarray.length > 0">
+            <li v-for="item in myarray">{{ item }}</li>
+        </ul>
     </div>
 </body>
 
